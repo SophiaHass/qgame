@@ -7,47 +7,24 @@
 
 
 
-// some test rooms to get started. 
+flavtbl: (18 22)!("Cobwebs line every last corner of this room.";"A fountain gives this room a refreshing sound.")
+flavtbl[23]: ("You are in that accursed room in which you were unceremoniously dumped.";"There is a trapdoor in the ceiling which would take a key if you had one.")
+flavtbl[24]: "This room is dark and grey."
 
 
-.rooms.a: {
-
- flav:: "You're in a room. It's square and boring.";
- p1:: "West";
- p2:: "East"
-
- }
-
-
-.rooms.b: {
-
- flav:: "You're in another room. It's also square and boring.";
- p1:: "West";
- p2:: "East"
-
- }
-
-
-flavour: {[roomID]
-
- if[roomID~18; :"Cobwebs line every last corner of this room."];
- if[roomID~22; :"A fountain gives this room a refreshing sound."];
- if[roomID~23; :"You are in that accursed room in which you were unceremoniously dumped. There is a trapdoor in the ceiling which would take a key if you had one."];
- if[roomID~24; :"This room is dark and grey."];
-
- 
- }
-
-
-
+room:: 23
+health:: 3
+maxhealth:: 3
 
 prompter: {
 
- show flav;
- show "1: " , p1;
- show "2: " , p2;
+ show flavtbl[room];
+ items[]
+ show doors[room];
  input: read0 0;
- if[input~enlist "1"; .rooms.b[]]; /our input comes in as a single item list.
+ input: input[0]; / our input comes in as a single item list. This turns it into an atom. Is there a more direct way to do this?
+ if[input in ("N"; "E"; "S"; "W"); room:: map[room; input]];
+ if[input~"I"; show inventory];
  prompter[]
  
  }
@@ -56,5 +33,4 @@ prompter: {
 
 \l map.q
 \l items.q
-.rooms.a[]
 prompter[]

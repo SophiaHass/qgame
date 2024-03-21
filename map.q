@@ -16,16 +16,7 @@
 
 // takes current room as a number, input as "E", "W", "N" or "S", and returns the number of the new room. If you would hit a wall, returns the current room.
 
-
-testmap: {
-
-    input: read0 0;
-    engine.map [25; input[0]] / read0 0 gives us a single item list, so I'm taking the first item
-
- 
- }
-
-engine.map: { [currentr; input]
+map: { [currentr; input]
 
  /if number is on edge of grid, trying to go beyond the grid just returns the current room; e.g. you can't:
 
@@ -36,12 +27,30 @@ engine.map: { [currentr; input]
 
  / regular movement:
 
+ / something isn't working right here, test it
  if[input~"N"; output: currentr-5];
  if[input~"S"; output: currentr+5];
- if[input~"E"; output: currentr-1]; 
- if[input~"W"; output: currentr+1];
+ if[input~"E"; output: currentr+1]; 
+ if[input~"W"; output: currentr-1];
 
  output
 
 
+ }
+
+
+// returns text saying there is a door to the north, east, west, etc.
+
+doors: { [currentr]
+
+
+ $[currentr in (2 3 4); "There are doors to the East, South, and West.";
+ currentr in (22 23 24); "There are doors to the North, East, and West.";
+ currentr in (6 11 16); "There are doors to the North, South, and East.";
+ currentr in (10 15 20); "There are doors to the North, West, and South.";
+ currentr~1; "There are doors to the East and South.";
+ currentr~5; "There are doors to the West and South.";
+ currentr~21; "There are doors to the North and East.";
+ currentr~25; "There are doors to the North and West.";
+ "There are doors to the North, South, East, and West."]
  }
