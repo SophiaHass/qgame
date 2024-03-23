@@ -22,8 +22,8 @@ map: { [currentr; input]
 
  if[(input~"N") and currentr in (1 2 3 4 5); :currentr];
  if[(input~"S") and currentr in (21 22 23 24 25); :currentr];
- if[(input~"E") and currentr in (1 6 11 16 21); :currentr];
- if[(input~"W") and currentr in (5 10 15 20 25); :currentr];
+ if[(input~"E") and currentr in (5 10 15 20 25); :currentr];
+ if[(input~"W") and currentr in (1 6 11 16 21); :currentr];
 
  / regular movement:
 

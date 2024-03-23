@@ -1,11 +1,10 @@
 
+
 \l map.q
 \l items.q
 \l flavtbl.q
 \l system.q
-
 system"S ",string"j"$.z.t / makes a new seed for the random number generator based on the current time.
-system "c 24 120"  // makes the terminal show longer lines 
 
 room:: 23
 health:: 3
@@ -16,10 +15,10 @@ prompter: {
 
  if[end~1;:"THE END"];
  show gameflavtbl[room];
- items[];
+ items[]
  show doors[room];
- $[health <= maxhealth%3; show "You are badly wounded."; health <= 2*maxhealth%3; show "You are wounded."];
- input: read0 0; /prompt for input
+ $[health < 2*maxhealth%3; show "You are wounded."; health < maxhealth%3; show "You are badly wounded."];
+ input: read0 0;
  input: input[0]; / our input comes in as a single item list
  if[input in ("N";"E";"S";"W"); room:: map[room; input]];
  if[input~"I"; show inventory];
