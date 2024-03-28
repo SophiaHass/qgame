@@ -26,7 +26,7 @@ flavtbl[23]: "A faint humming fills the air, coming from an unknown source."
 flavtbl[24]: "The room is so cold you can see your breath hanging in the air."
 flavtbl[25]: "A tapestry depicts a scene of ancient rituals, its colors faded with age."
 flavtbl[26]: "The walls seem to pulse with a faint, rhythmic heartbeat."
-flavtbl[27]: "A suit of armor stands at attention in the corner, its empty visor watching."
+flavtbl[27]: "A feeling of claustrophobia overwhelms you as you step into the room, the walls seeming to close in."
 flavtbl[28]: "The floor is covered in intricate patterns, each one a puzzle waiting to be solved."
 flavtbl[29]: "A gust of wind rushes through the room, carrying with it the faint scent of roses."
 flavtbl[30]: "The room is filled with the sound of distant whispers, too faint to make out."
@@ -87,11 +87,10 @@ flavtbl[84]: "The walls are covered in strange symbols, their meanings lost to t
 flavtbl[85]: "A feeling of vertigo overwhelms you as you step into the room, the floor seeming to tilt."
 flavtbl[86]: "A single, glowing rune is etched into the floor, pulsing with power."
 flavtbl[87]: "The room is filled with the sound of buzzing insects, their wings a constant drone."
-flavtbl[88]: "A feeling of déjà vu washes over you as you step into the room, as if you've been here before."
+flavtbl[88]: "A feeling of deja vu washes over you as you step into the room, as if you've been here before."
 flavtbl[89]: "A whispering wind blows through the room, carrying with it the faint scent of roses."
 flavtbl[90]: "The walls are covered in vines, their thorns sharp and unforgiving."
 flavtbl[91]: "A single, flickering candle casts long shadows on the walls, distorting shapes."
-flavtbl[92]: "A feeling of claustrophobia overwhelms you as you step into the room, the walls seeming to close in."
 
 /make sure to fill in gaps
 
@@ -99,4 +98,4 @@ flavtbl[92]: "A feeling of claustrophobia overwhelms you as you step into the ro
 / randomises rooms for a game
 gameflavtbl: (1 + til 25)!(-25? value flavtbl) 
 
-gameflavtbl[23]: ("You are in that accursed room into which you were unceremoniously dumped.";"There is a trapdoor in the ceiling which would take a key if you had one.")
+gameflavtbl[23]: ("You are in that accursed room into which you were unceremoniously dumped. There is a trapdoor in the ceiling which would take a key if you had one.")

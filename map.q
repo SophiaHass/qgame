@@ -1,7 +1,6 @@
 
 /
 
-
 5 5 # 1+til 25 gives us our grid:
 
 1  2  3  4  5 
@@ -10,11 +9,10 @@
 16 17 18 19 20
 21 22 23 24 25
 
-
-
 \
 
-// takes current room as a number, input as "E", "W", "N" or "S", and returns the number of the new room. If you would hit a wall, returns the current room.
+
+/ takes current room as a number, input as "E", "W", "N" or "S", and returns the number of the new room. If you would hit a wall, returns the current room.
 
 map: { [currentr; input]
 
@@ -27,7 +25,6 @@ map: { [currentr; input]
 
  / regular movement:
 
- / something isn't working right here, test it
  if[input~"N"; output: currentr-5];
  if[input~"S"; output: currentr+5];
  if[input~"E"; output: currentr+1]; 
@@ -35,14 +32,12 @@ map: { [currentr; input]
 
  output
 
-
  }
 
 
 // returns text saying there is a door to the north, east, west, etc.
 
 doors: { [currentr]
-
 
  $[currentr in (2 3 4); "There are doors to the East, South, and West.";
  currentr in (22 23 24); "There are doors to the North, East, and West.";
@@ -53,4 +48,17 @@ doors: { [currentr]
  currentr~21; "There are doors to the North and East.";
  currentr~25; "There are doors to the North and West.";
  "There are doors to the North, South, East, and West."]
+
+ }
+
+
+/ what happens when the player uses the map
+mapper: {
+ show "DUNGEON MAP";
+ show "Despite its irregularities, the dungeon appears to form a rough grid. The mapmaker has taken advantage of this by numbering it in a logical progression from 1 to 25.";
+ show 5 5 # 1+til 25;
+ show "You are in room " , (string room) , ".";
+ show "The exit is in room 23.";
+ show "..."
+
  }

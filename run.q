@@ -5,7 +5,7 @@
 \l system.q
 
 system"S ",string"j"$.z.t / makes a new seed for the random number generator based on the current time.
-system "c 24 120"  // makes the terminal show longer lines 
+system "c 200 500"  / makes the terminal show longer lines 
 
 room:: 23
 health:: 3
@@ -16,13 +16,14 @@ prompter: {
 
  if[end~1;:"THE END"];
  show gameflavtbl[room];
- items[];
+ itemreader[];
  show doors[room];
  $[health <= maxhealth%3; show "You are badly wounded."; health <= 2*maxhealth%3; show "You are wounded."];
- input: read0 0; /prompt for input
- input: input[0]; / our input comes in as a single item list
+ input: (read0 0)[0]; /prompt for input
  if[input in ("N";"E";"S";"W"); room:: map[room; input]];
  if[input~"I"; show inventory];
+ if[input~"U"; pickup[]];
+ if[input~"M"; if["Dungeon Map" in inventory; mapper[]];]
  if[input~"Q"; quitprompt[]];
  prompter[]
  
