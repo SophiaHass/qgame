@@ -7,7 +7,7 @@ flavtbl[4]: "The walls are covered in shimmering crystals that cast a rainbow gl
 flavtbl[5]: "Books line the shelves, each one whispering secrets of forgotten spells."
 flavtbl[6]: "Strange mushrooms grow in the corners, emitting a soft, pulsating light."
 flavtbl[7]: "An eerie mist hangs in the air, distorting shapes and sounds."
-flavtbl[8]: "Giant spider webs stretch from wall to wall, swaying gently in an unseen breeze."
+flavtbl[8]: "Giant spider webs stretch from wall to wall, swaying gently in a breeze that you cannot feel."
 flavtbl[9]: "The floor is littered with ancient runes, each one glowing faintly."
 flavtbl[10]: "A portal crackles with energy in the center, offering glimpses into other realms."
 flavtbl[11]: "Statues of long-forgotten heroes line the room, their eyes following your every move."
@@ -35,7 +35,7 @@ flavtbl[32]: "The walls are lined with cages, each one holding a different creat
 flavtbl[33]: "A mirror hangs on the wall, its surface reflecting your deepest fears."
 flavtbl[34]: "The room seems to shift and change before your eyes, never staying the same."
 flavtbl[35]: "A clock ticks loudly in the corner, counting down the moments until something unknown."
-flavtbl[36]: "Strange symbols cover the walls, their meanings lost to time."
+flavtbl[36]: "A whispering wind blows through the room, carrying with it the faint scent of roses."
 flavtbl[37]: "A gust of wind rushes through the room, extinguishing any light sources."
 flavtbl[38]: "A series of mirrors line the walls, creating endless reflections of yourself."
 flavtbl[39]: "The floor is slick with slime, making each step a precarious one."
@@ -54,9 +54,9 @@ flavtbl[51]: "The floor is covered in a thick layer of dust, undisturbed for cen
 flavtbl[52]: "A series of mirrors line the walls, reflecting fractured images of yourself."
 flavtbl[53]: "The room is filled with the sound of distant laughter, echoing eerily."
 flavtbl[54]: "A statue of a forgotten deity stands vigil in the corner, its eyes glowing faintly."
-flavtbl[55]: "A winding staircase leads both up and down, disappearing into darkness."
+flavtbl[55]: "A single, flickering candle casts long shadows on the walls, distorting shapes."
 flavtbl[56]: "The walls are covered in pulsating veins of glowing crystal, casting strange shadows."
-flavtbl[57]: "A gust of wind blows through the room, extinguishing any flames."
+flavtbl[57]: "The walls are covered in vines, their thorns sharp and unforgiving."
 flavtbl[58]: "A thorny vine snakes its way across the floor, reaching out to trip unwary travelers."
 flavtbl[59]: "A strange, otherworldly music fills the air, enchanting and unsettling."
 flavtbl[60]: "A pentagram is etched into the floor, its lines glowing with arcane energy."
@@ -88,9 +88,7 @@ flavtbl[85]: "A feeling of vertigo overwhelms you as you step into the room, the
 flavtbl[86]: "A single, glowing rune is etched into the floor, pulsing with power."
 flavtbl[87]: "The room is filled with the sound of buzzing insects, their wings a constant drone."
 flavtbl[88]: "A feeling of deja vu washes over you as you step into the room, as if you've been here before."
-flavtbl[89]: "A whispering wind blows through the room, carrying with it the faint scent of roses."
-flavtbl[90]: "The walls are covered in vines, their thorns sharp and unforgiving."
-flavtbl[91]: "A single, flickering candle casts long shadows on the walls, distorting shapes."
+
 
 /make sure to fill in gaps
 

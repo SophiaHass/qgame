@@ -1,10 +1,11 @@
 
-inventory::(`r;`s;`d)!("Rusty Sword";"Smoke Bomb";"Dungeon Map") / this table is the player's inventory. We start with these items. / delete dungeon map later
+inventory::([sym:(`r`s)]item:("Rusty Sword";"Smoke Bomb"); useable:(`no`yes)) / this table is the player's inventory. We start with these items. 
 
 /preparing the items table
 itemslist::([sym:(`o;`h;`k;`b;`d;`a;`g;`p;`m;`c)]item:("Oaken Shield";"Holy Amulet of Protection";"Key";"Boots of Alacrity";"Dungeon Map";"Apple";"Golden Apple";"Potion";"Flaming Sword of Archangel Michael";"Suit of Crystal Armor")) / create itemlist with individual keys
 aaa: update loc: (count itemslist)?(1+til 25) from itemslist / adds randomised room numbers to each item. you can have multiple items in a room.
-aaa: update loc:23 from aaa where sym in (`m`a`h) / testing code, gives you three items in current room.comment out later.
+aaa: update useable: (`no`no`no`no`no`yes`yes`yes`no`no) from aaa 
+/aaa: update loc:23 from aaa where sym in (`k) / testing code, gives you items in starter room. comment out later.
 itemslist:: aaa / yes, I have no idea why this is necessary to do this extra step but it is. Forgive me for I have wavered in my faith, but I keep thinking that the global variable functionality of q is super awkward and buggy
 
 /language stuff
@@ -37,25 +38,63 @@ itemreader: {
 / what happens when you pick items up (you can only pick up all items in the room)
 pickup: {
 
-    if[room in exec loc from itemslist; /only does anything if there are items
-
         items: exec item from itemslist where loc=room; / a list of items in the current room
         
-        /function to showthe text that appears when you pick up a given item
-        pickuptext:{if[x in ("Dungeon Map";"Apple";"Golden Apple";"Potion";"Key"); show "You picked up the " , x , "."];
-            if[x in ("Holy Amulet of Protection";"Boots of Alacrity";"Suit of Crystal Armor"); show "You donned the " , x , "."];
-            if[x ~ "Oaken Shield"; show "You took up the " , x , "."];
-            if[x ~ "Flaming Sword of Archangel Michael"; show "You tossed your rusty sword aside and took up the " , x , ". You are overcome with a sensation of holy might."];
+        /function to show the text that appears when you pick up a given item
+        pickuptext:{if[x in ("Dungeon Map";"Apple";"Golden Apple";"Potion";"Key"); show "You pick up the " , x , "."];
+            if[x in ("Holy Amulet of Protection";"Boots of Alacrity";"Suit of Crystal Armor"); show "You don the " , x , "."];
+            if[x ~ "Oaken Shield"; show "You take up the " , x , "."];
+            if[x ~ "Flaming Sword of Archangel Michael"; show "You toss your rusty sword aside and take up the " , x , ". You are overcome with a sensation of holy might."]; 
         };
-        
+
+        / if picking up sword of michael, delete rusty sword
+        if["Flaming Sword of Archangel Michael" in items; aaa: delete from inventory where item in ("Rusty Sword";"I don't know why this has to be here but the code doesn't work otherwise"); inventory:: aaa];
+
+        / if boots of alacrity, slow down grue relative to you
+
+        if["Boots of Alacrity" in items; gruespeed::3];
+
         / adding items to inventory and then deleting from itemslist
         pickuptext each items;
-        aaa: (exec sym from itemslist where item in items)!(exec item from itemslist where item in items); / making a list of items to add
-        bbb: inventory , aaa; / appending items to inventory
+        aaa: select sym, item, useable from itemslist where item in items; / making a list of items to add
+        aaa: `sym xkey aaa; /needs to be keyed to match (that took me like half a fucking hour to realise!)
+        bbb: inventory, aaa; / appending items to inventory
         inventory:: bbb;
         ccc:delete from itemslist where item in items; / delete items from itemslist
         itemslist:: ccc
-        
-    ] 
 
  }
+
+
+/individual items, as they are used
+
+apple: {
+ 
+ show "You eat the apple. You feel a little stronger with something in your belly.";
+ health:: health+1;
+ maxhealth:: maxhealth+1
+ 
+ }
+
+golden: {
+
+ show "You eat the golden apple. You feel warm and hale from head to toe.";
+ health:: health+3;
+ maxhealth:: maxhealth+3
+ 
+ }
+
+potion: {
+ 
+ show "You drink the potion. You feel a warm glow spread through your body." , $[health <= maxhealth%3; " You feel much better.";health <= 2*maxhealth%3; " You feel better.";""];
+ health:: maxhealth
+
+ }
+
+smokebomb: {
+
+    show "You smash the Smoke Bomb on the ground! A thick cloud of smoke provides cover.";
+    flee[`smokebomb]
+ 
+ }
+
